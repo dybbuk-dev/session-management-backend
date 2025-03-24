@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
+import loadSessionsFromFile from '../utils/loadSessions';
 
 const app = express();
 
@@ -42,6 +43,8 @@ app.use(
 // Parses the body of POST/PUT request
 // to JSON
 app.use(bodyParser.json({ limit: '10mb' }));
+
+loadSessionsFromFile();
 
 // Configure the Entity routes
 const routes = express.Router();
